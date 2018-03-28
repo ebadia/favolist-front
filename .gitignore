@@ -33,6 +33,7 @@
 npm-debug.log
 testem.log
 /typings
+docker-build.sh
 
 # e2e
 /e2e/*.js

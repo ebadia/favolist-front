@@ -1,0 +1,7 @@
+{
+  "/api/v1": {
+    "target": "http://favolist-dev.eu-west-1.elasticbeanstalk.com",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

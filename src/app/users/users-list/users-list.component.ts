@@ -16,6 +16,7 @@ import { UsersService } from '@app/services/users/users.service'
 })
 export class UsersListComponent implements OnInit {
   users: any[]
+  filtro: string
 
   constructor(private _router: Router, private _service: UsersService) {}
 

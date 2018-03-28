@@ -51,6 +51,9 @@ export class LoginComponent implements OnInit {
     this.accounts$.login(form.value.username, form.value.password).subscribe(
       res => {
         console.log('user-auth', res)
+        console.log('user-auth', res.headers.get('Authorization'))
+        console.log('body', res.body)
+
         localStorage.setItem('auth_token', res.headers.get('Authorization'))
         localStorage.setItem('user', JSON.stringify(res.body))
         localStorage.setItem('roles', JSON.stringify(res.body.roles))
