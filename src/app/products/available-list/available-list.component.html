@@ -1,0 +1,25 @@
+<div class="basic-container">
+  <h3>Productos de hoy</h3>
+
+  <mat-card *ngFor="let product of availables">
+    <mat-card-header>
+      <div class="header">{{product.name}}</div>
+    </mat-card-header>
+    <img mat-card-image src="product.image" *ngIf="product.image">
+    <mat-card-content>
+      <button *ngIf="ruta==='dash'" mat-button (click)="delete(product)">
+        <i class="material-icons">delete</i>
+      </button>
+      <button *ngIf="ruta==='new'" mat-button (click)="addToCart(product)">
+        <i class="material-icons">shopping_basket</i>
+      </button>
+    </mat-card-content>
+
+    <!-- <mat-card-actions>
+    </mat-card-actions>
+
+    <mat-card-footer>
+    </mat-card-footer> -->
+
+  </mat-card>
+</div>

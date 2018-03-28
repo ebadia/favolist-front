@@ -1,0 +1,13 @@
+.form-section,
+.form-field,
+.submit-button {
+  width: 100%;
+}
+
+.wide-form {
+  padding: 30px;
+}
+
+mat-checkbox {
+  margin-right: 10px;
+}

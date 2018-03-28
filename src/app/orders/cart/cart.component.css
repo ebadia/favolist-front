@@ -1,0 +1,12 @@
+.header {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+mat-chip {
+  font-size: 50%;
+}
+
+mat-card {
+  margin: 5px;
+}

@@ -1,0 +1,22 @@
+.container {
+  display: grid;
+  grid-gap: 20px;
+  height: 100vh;
+  grid-template-columns: 1fr minmax(350px,2fr) 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+}
+
+.form {
+  justify-self: stretch;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-card-footer {
+  padding: 24px;
+  font-size: 80%;
+  color: dimgrey;
+}

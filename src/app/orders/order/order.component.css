@@ -1,0 +1,46 @@
+.header {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+mat-chip {
+  font-size: 50%;
+}
+
+mat-card {
+  margin: 5px;
+}
+
+mat-card-title {
+  font-weight: bold;
+  font-size: 1.2em !important;
+}
+
+mat-card-header {
+  border-bottom: 1px dotted grey;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 2.5em 4fr 1fr;
+  align-items: center;
+  margin-bottom: 5px;
+  height: 36px;
+}
+
+.item-name {
+  font-size: 80%;
+}
+
+.search-field {
+  width: 100%;
+}

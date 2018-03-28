@@ -1,0 +1,32 @@
+<mat-list>
+  <mat-list-item *ngFor="let product of products">
+    <div class="full">
+      <h3>{{product.name}}</h3>
+      <button mat-button (click)="edit(product)">EDITA</button>
+      <button mat-button (click)="addAvailable(product)">HOY</button>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
+
+<!-- <mat-card *ngFor="let product of products">
+  <mat-card-header>
+    <div class="header">{{product.name}}</div>
+  </mat-card-header>
+  <img mat-card-image src="product.image" *ngIf="product.image">
+  <mat-card-content>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="edit(product)">EDITA</button>
+    <button mat-button (click)="addAvailable(product)">HOY</button>
+  </mat-card-actions>
+
+  <mat-card-footer>
+    <mat-chip-list>
+      <mat-chip *ngFor="let day of product.days">{{day.name}}</mat-chip>
+    </mat-chip-list>
+  </mat-card-footer>
+
+</mat-card> -->

@@ -1,0 +1,18 @@
+<div class="basic-container">
+  <h3>Carro de la compra</h3>
+  <button mat-raised-button color="primary" (click)="vaciar()">Vaciar el pedido</button>
+  <button mat-raised-button color="primary" (click)="comprar()">Cerrar el pedido</button>
+
+  <mat-card *ngFor="let product of cart; let i = index">
+    <mat-card-header>
+      <div class="header">{{product.name}}</div>
+    </mat-card-header>
+    <img mat-card-image src="product.image" *ngIf="product.image">
+    <mat-card-content>
+      <button mat-button (click)="delete(i)">
+        <i class="material-icons">delete</i>
+      </button>
+    </mat-card-content>
+
+  </mat-card>
+</div>

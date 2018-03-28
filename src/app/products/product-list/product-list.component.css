@@ -1,0 +1,27 @@
+.header {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.actions {
+  justify-self: right;
+  align-self: stretch;
+}
+
+.full {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  width: 100%;
+}
+
+mat-card-footer {
+  margin: 5px;
+}
+
+mat-chip {
+  font-size: 70%;
+}
+
+mat-card {
+  margin: 5px;
+}

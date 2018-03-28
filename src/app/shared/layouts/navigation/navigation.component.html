@@ -1,0 +1,40 @@
+<header>
+  <!-- <mat-menu #menu="matMenu"> -->
+    <mat-toolbar>
+  <span routerLinkActive="active">
+    <a mat-icon-button color="accent" routerLink="/favolist/home" matTooltip="Inicio">
+      <mat-icon>home</mat-icon>
+    </a>
+  </span>
+  <span routerLinkActive="active">
+    <a mat-icon-button color="accent" routerLink="/favolist/products" matTooltip="Productos">
+      <mat-icon>work</mat-icon>
+    </a>
+  </span>
+  <span routerLinkActive="active">
+    <a mat-icon-button color="accent" routerLink="/favolist/users" matTooltip="Clientes">
+      <i class="material-icons">face</i>
+    </a>
+  </span>
+  <span routerLinkActive="active">
+    <a mat-icon-button color="accent" routerLink="/favolist/orders/orders-list/process" matTooltip="Pedidos">
+      <i class="material-icons">assignment</i>
+    </a>
+  </span>
+  <span routerLinkActive="active">
+    <a mat-icon-button color="accent" routerLink="/favolist/orders/orders-list/ready" matTooltip="Preparados para recoger">
+      <i class="material-icons">assignment_ind</i>
+    </a>
+  </span>
+
+  <span class="fill-space"></span>
+
+    <span routerLinkActive="active">
+    <a mat-icon-button color="accent" (click)="salir()" matTooltip="Salir">
+      Salir
+    </a>
+  </span>
+
+  <!-- </mat-menu> -->
+  </mat-toolbar>
+</header>

@@ -1,0 +1,36 @@
+<mat-card>
+  <button mat-button color="accent" *ngIf="status==='process'" (click)="orderReady(order)">PREPARADO</button>
+  <button mat-button color="accent" *ngIf="order.status==='READY'" (click)="orderClosed(order)">RECOGIDO</button>
+  <div *ngIf="order.status==='CLOSED'">
+    <i class="material-icons">assignment_turned_in</i>
+  </div>
+  <mat-card-header>
+    <mat-card-title>{{order.user.first_name}} {{order.user.last_name}} </mat-card-title>
+    <mat-card-subtitle>{{order.user.mobile}}</mat-card-subtitle>
+    <mat-card-subtitle>{{order.hour}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngFor="let item of order.items">
+      <div class="item">
+        <div class="header">{{item.quantity}}</div>
+        <div class="item-name">{{item.product.name}}</div>
+        <div>
+          <button mat-button (click)="doDone(order, item)" *ngIf="item.status!=='READY'">
+            <mat-icon aria-label="Listo">done</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <mat-chip-list>
+     <mat-chip color="accent" selected="true">{{order.status}}</mat-chip>
+    </mat-chip-list>
+  </mat-card-actions>
+
+  <mat-card-footer>
+  </mat-card-footer>
+
+</mat-card>
