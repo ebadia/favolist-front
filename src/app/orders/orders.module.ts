@@ -9,6 +9,7 @@ import { OrdersNewComponent } from './orders-new/orders-new.component'
 import { ProductsModule } from '@app/products/products.module'
 import { OrderComponent } from './order/order.component'
 import { CartComponent } from './cart/cart.component'
+import { FilterPipe } from '@shared/pipes/filter-pipe.pipe'
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { CartComponent } from './cart/cart.component'
     OrdersNewComponent,
     OrderComponent,
     CartComponent,
+    FilterPipe
   ],
   exports: [OrdersListComponent]
 })

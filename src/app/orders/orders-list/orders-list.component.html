@@ -9,7 +9,7 @@
 </mat-form-field>
 
 <div class="container">
-  <app-order *ngFor="let order of orders | filter: filtro" [order]="order" [status]="status" (ready)="orderReady($event)" (closed)="orderClosed($event)"
+  <app-order *ngFor="let order of orders | filter : filtro" [order]="order" [status]="status" (ready)="orderReady($event)" (closed)="orderClosed($event)"
     (done)="done($event)"></app-order>
 
   <!-- <mat-card *ngFor="let order of orders">
