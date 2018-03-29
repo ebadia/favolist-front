@@ -17,6 +17,8 @@ import { ProductsService } from '@app/services/products/products.service'
 })
 export class ProductListComponent implements OnInit {
   products: any[]
+  availables: any[]
+  shop: string
 
   constructor(
     private _shops: ShopsService,
@@ -29,7 +31,9 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.shop = localStorage.getItem('admin_shop')
     this.getProducts()
+    this.RecuperaDatos()
   }
 
   private getProducts() {
@@ -38,6 +42,24 @@ export class ProductListComponent implements OnInit {
       console.log(res)
       this.products = res.products
     })
+  }
+
+  private RecuperaDatos() {
+    this._available.getTodayFromShop(+this.shop).subscribe(
+      res => {
+        this.availables = res
+      },
+      error => {
+        console.log('ERROR', error)
+        const snackBarRef = this.snackBar.open(
+          'Error al recuperar la lista de hoy',
+          '',
+          {
+            duration: 3000
+          }
+        )
+      }
+    )
   }
 
   addAvailable(product) {

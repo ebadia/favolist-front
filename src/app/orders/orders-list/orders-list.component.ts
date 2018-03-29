@@ -48,7 +48,9 @@ export class OrdersListComponent implements OnInit {
         if (this.status === 'process') {
           return item.status === 'ORDERING' || item.status === 'OPENED'
         } else if (this.status === 'ready') {
-          return item.status === 'READY' || item.status === 'CLOSED'
+          return item.status === 'READY'
+        } else if (this.status === 'closed') {
+          return item.status === 'CLOSED'
         } else {
           return res
         }
