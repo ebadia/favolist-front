@@ -1,0 +1,46 @@
+<div class="basic-container">
+
+  <h3>
+    <span *ngIf="user">{{user.name}}</span>
+  </h3>
+
+  <form *ngIf="user" class="wide-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <input type="hidden" formControlName="shopId">
+
+    <section class="form-section">
+      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="name">
+      </mat-form-field>
+    </section>
+
+    <section class="form-section">
+      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" placeholder="Precio" formControlName="price">
+      </mat-form-field>
+    </section>
+
+    <section class="form-section">
+      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
+      </mat-form-field>
+    </section>
+
+    <section class="form-section">
+      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+        <mat-label>Imagen</mat-label>
+        <input matInput placeholder="Imagen" formControlName="image">
+      </mat-form-field>
+    </section>
+
+
+    <section class="form-section">
+      <button mat-raised-button type="submit" class="submit-button" color="primary">Enviar</button>
+    </section>
+
+  </form>
+
+</div>

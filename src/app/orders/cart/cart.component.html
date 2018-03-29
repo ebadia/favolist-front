@@ -1,7 +1,11 @@
 <div class="basic-container">
+
+  <div class="button-container">
+    <button [disabled]="cart && cart.length === 0" mat-raised-button color="accent" (click)="vaciar()">VACIAR</button>
+    <button [disabled]="cart && cart.length === 0" mat-raised-button color="primary" (click)="comprar()">PEDIR</button>
+  </div>
+
   <h3>Carro de la compra</h3>
-  <button mat-raised-button color="primary" (click)="vaciar()">Vaciar el pedido</button>
-  <button mat-raised-button color="primary" (click)="comprar()">Cerrar el pedido</button>
 
   <mat-card *ngFor="let product of cart; let i = index">
     <mat-card-header>

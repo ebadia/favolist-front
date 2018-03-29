@@ -50,10 +50,10 @@ const routes: Routes = [
   { path: '**', redirectTo: 'error404' }
 ]
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes, { useHash: true })],
+//   exports: [RouterModule]
+// })
+// export class AppRoutingModule {}
 
-// export const routing = RouterModule.forRoot( routes, {useHash: true})
+export const appRouting = RouterModule.forRoot(routes, { useHash: true })

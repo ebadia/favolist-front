@@ -1,48 +1,23 @@
-<button class="btn-full" mat-raised-button (click)="order()" color="primary">NUEVO</button>
-<button class="btn-full" mat-raised-button (click)="refresh()">REFRESCA</button>
-
-<mat-form-field class="search-field">
-  <input matInput type="text" placeholder="Buscar" [(ngModel)]="filtro" />
-  <button mat-button *ngIf="filtro" matSuffix mat-icon-button aria-label="Clear" (click)="filtro=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
-
 <div class="container">
-  <app-order *ngFor="let order of orders | filter : filtro" [order]="order" [status]="status" (ready)="orderReady($event)" (closed)="orderClosed($event)"
-    (done)="done($event)"></app-order>
 
-  <!-- <mat-card *ngFor="let order of orders">
-    <button mat-button color="accent" *ngIf="status==='process'" (click)="orderReady(order)">PREPARADO</button>
-    <button mat-button color="accent" *ngIf="order.status==='READY'" (click)="orderClosed(order)">RECOGIDO</button>
-    <div *ngIf="order.status==='CLOSED'">
-      <i class="material-icons">assignment_turned_in</i>
-    </div>
-    <mat-card-header>
-      <mat-card-title>{{order.user.first_name}} {{order.user.last_name}} </mat-card-title>
-      <mat-card-subtitle>{{order.user.mobile}}</mat-card-subtitle>
-      <mat-card-subtitle>{{order.hour}}</mat-card-subtitle>
-    </mat-card-header>
+  <h1 *ngIf="status==='process'">Pedidos pendientes</h1>
+  <h1 *ngIf="status==='ready'">Preaparados para recoger</h1>
 
-    <mat-card-content>
-      <div *ngFor="let item of order.items">
-        <div class="item">
-          <div class="header">{{item.quantity}}</div>
-          <div class="item-name">{{item.product.name}}</div>
-          <div>
-            <button mat-button (click)="done(order, item)" *ngIf="item.status!=='READY'">
-              <mat-icon aria-label="Listo">done</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-    </mat-card-content>
+  <div class="button-container">
+    <button class="btn-full" mat-raised-button (click)="order()" color="primary">NUEVO</button>
+    <button class="btn-full" mat-raised-button (click)="refresh()">REFRESCA</button>
+  </div>
 
-    <mat-card-actions>
-    </mat-card-actions>
+  <mat-form-field class="search-field">
+    <input matInput type="text" placeholder="Buscar" [(ngModel)]="filtro" />
+    <button mat-button *ngIf="filtro" matSuffix mat-icon-button aria-label="Clear" (click)="filtro=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
-    <mat-card-footer>
-    </mat-card-footer>
+  <div class="orders-container">
+    <app-order *ngFor="let order of orders | filter : filtro" [order]="order" [status]="status" (ready)="orderReady($event)"
+      (closed)="orderClosed($event)" (done)="done($event)"></app-order>
 
-  </mat-card> -->
+  </div>
 </div>

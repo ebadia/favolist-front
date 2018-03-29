@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { usersRouting } from './users.routing'
 import { UsersListComponent } from './users-list/users-list.component'
-import { UsersComponent } from '@app/users/users.component'
+import { UsersComponent } from '@app/users/users.component';
+import { UsersEditComponent } from './users-edit/users-edit.component'
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { UsersComponent } from '@app/users/users.component'
     ReactiveFormsModule,
     usersRouting
   ],
-  declarations: [UsersComponent, UsersListComponent],
+  declarations: [UsersComponent, UsersListComponent, UsersEditComponent],
   exports: [UsersListComponent]
 })
 export class UsersModule {}

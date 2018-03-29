@@ -1,22 +1,25 @@
-<mat-form-field class="search-field">
-  <input matInput type="text" placeholder="Buscar" [(ngModel)]="filtro" />
-  <button mat-button *ngIf="filtro" matSuffix mat-icon-button aria-label="Clear" (click)="filtro=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<div class="container">
 
-<mat-list>
-  <mat-list-item *ngFor="let user of users | filter : filtro">
-    <div class="full">
-      <span>{{user.first_name}}</span>
-      <span>{{user.last_name}}</span>
-      <span>{{user.email}}</span>
-      <span>{{user.mobile}}</span>
-      <div>
-        <button mat-button (click)="edit(user)">EDITA</button>
-        <button mat-button (click)="order(user)">PEDIDO</button>
+  <mat-form-field class="search-field">
+    <input matInput type="text" placeholder="Buscar" [(ngModel)]="filtro" />
+    <button mat-button *ngIf="filtro" matSuffix mat-icon-button aria-label="Clear" (click)="filtro=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-list>
+    <mat-list-item *ngFor="let user of users | filter : filtro">
+      <div class="full">
+        <span class="item">{{user.first_name}} {{user.last_name}}</span>
+        <span class="item">{{user.email}}</span>
+        <span class="item">{{user.mobile}}</span>
+        <div>
+          <!-- <button mat-button (click)="edit(user)">EDITA</button> -->
+          <button mat-raised-button color="accent" (click)="order(user)">PEDIDO</button>
+        </div>
       </div>
-    </div>
-    <mat-divider></mat-divider>
-  </mat-list-item>
-</mat-list>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+</div>

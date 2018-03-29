@@ -3,6 +3,12 @@
   font-size: 1.2em;
 }
 
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  width: 100%;
+}
 mat-chip {
   font-size: 50%;
 }

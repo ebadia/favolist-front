@@ -3,8 +3,8 @@ import { ModuleWithProviders } from '@angular/core'
 import { ListComponent } from './list/list.component'
 
 export const homeRoutes: Routes = [
-  { path: '', redirectTo: 'list', pathMatch: 'full' },
-  { path: 'list', component: ListComponent, data: { title: 'Home' } }
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: 'main', component: ListComponent }
 ]
 
 export const homeRouting: ModuleWithProviders = RouterModule.forChild(

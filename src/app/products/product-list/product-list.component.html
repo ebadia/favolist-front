@@ -1,32 +1,29 @@
-<mat-list>
+<!-- <mat-list>
   <mat-list-item *ngFor="let product of products">
-    <div class="full">
-      <h3>{{product.name}}</h3>
-      <button mat-button (click)="edit(product)">EDITA</button>
-      <button mat-button (click)="addAvailable(product)">HOY</button>
+    <div>
+      <h4>{{product.name}}</h4>
+      <button mat-raised-button (click)="edit(product)">EDITA</button>
+      <button mat-raised-button (click)="addAvailable(product)">HOY</button>
     </div>
     <mat-divider></mat-divider>
   </mat-list-item>
-</mat-list>
+</mat-list> -->
 
-<!-- <mat-card *ngFor="let product of products">
-  <mat-card-header>
-    <div class="header">{{product.name}}</div>
-  </mat-card-header>
-  <img mat-card-image src="product.image" *ngIf="product.image">
-  <mat-card-content>
+<div class="button-container">
+  <button mat-raised-button color="primary" class="full-width" (click)="new()">NUEVO</button>
+  <button mat-raised-button color="primary" class="full-width" (click)="hoy()">HOY</button>
+</div>
 
+<mat-card *ngFor="let product of products">
+
+  <mat-card-content class="full">
+    <span>
+      <h4>{{product.name}}</h4>
+      <span class="small" *ngFor="let day of product.days">{{day.name}} </span>
+    </span>
+    <button mat-raised-button (click)="edit(product)">EDITA</button>
+    <button mat-raised-button color="accent" (click)="delete(product)">BORRA</button>
+    <button mat-raised-button color="warn" (click)="addAvailable(product)">HOY</button>
   </mat-card-content>
 
-  <mat-card-actions>
-    <button mat-button (click)="edit(product)">EDITA</button>
-    <button mat-button (click)="addAvailable(product)">HOY</button>
-  </mat-card-actions>
-
-  <mat-card-footer>
-    <mat-chip-list>
-      <mat-chip *ngFor="let day of product.days">{{day.name}}</mat-chip>
-    </mat-chip-list>
-  </mat-card-footer>
-
-</mat-card> -->
+</mat-card>

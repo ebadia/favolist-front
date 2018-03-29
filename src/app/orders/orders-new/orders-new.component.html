@@ -1,12 +1,13 @@
 <div class="container">
-  <div class="basic-container">
-    <h3>Pedidos de hoy</h3>
-    <app-order *ngFor="let order of orders" [order]="order" [status]="status"></app-order>
-  </div>
   <div>
     <app-available-list></app-available-list>
   </div>
-  <div>
+  <div class="today">
     <app-cart></app-cart>
+  </div>
+  <div class="basic-container">
+    <!-- <h3>Pedidos de hoy</h3> -->
+    <div *ngIf="orders || orders.length === 0">Hoy no tiene aún pedidos.</div>
+    <app-order *ngFor="let order of orders" [order]="order" [status]="status"></app-order>
   </div>
 </div>

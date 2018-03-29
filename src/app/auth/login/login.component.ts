@@ -13,6 +13,7 @@ import { AccountsService } from '../../services/accounts/accounts.service'
 export class LoginComponent implements OnInit {
   form: FormGroup
   user: any
+  msg: string
 
   constructor(
     private router$: Router,
@@ -50,10 +51,6 @@ export class LoginComponent implements OnInit {
   onSubmit(form) {
     this.accounts$.login(form.value.username, form.value.password).subscribe(
       res => {
-        console.log('user-auth', res)
-        console.log('user-auth', res.headers.get('Authorization'))
-        console.log('body', res.body)
-
         localStorage.setItem('auth_token', res.headers.get('Authorization'))
         localStorage.setItem('user', JSON.stringify(res.body))
         localStorage.setItem('roles', JSON.stringify(res.body.roles))
@@ -63,8 +60,13 @@ export class LoginComponent implements OnInit {
           this.accounts$.getUserAdminShops(res.body.id).subscribe(
             user => {
               console.log('user-shop', user)
-              localStorage.setItem('admin_shop', user.shop.id || '')
-              this.router$.navigate(['favolist', 'home'])
+              if (user.shop) {
+                localStorage.setItem('admin_shop', user.shop.id || '')
+                this.router$.navigate(['favolist', 'home', 'main'])
+              } else {
+                this.msg = 'Aplicación reservada para gestores de tienda'
+                this.router$.navigate(['login'])
+              }
             },
             error => console.log('Error in service', error)
           )

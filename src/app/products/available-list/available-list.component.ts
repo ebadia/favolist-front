@@ -59,7 +59,7 @@ export class AvailableListComponent implements OnInit {
 
   ngOnInit() {
     this._route.url.subscribe(res => {
-      console.log('ROUTA', res[0].path)
+      // console.log('ROUTA', res[0].path)
       this.ruta = res[0].path
     })
 
@@ -92,6 +92,20 @@ export class AvailableListComponent implements OnInit {
     )
   }
 
+  action(product) {
+    switch (this.ruta) {
+      case 'new':
+        this.addToCart(product)
+        break
+      case 'dash':
+        this.delete(product)
+        break
+
+      default:
+        break
+    }
+  }
+
   delete(product) {
     console.log('DELETED CONFIRM', product)
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
@@ -113,5 +127,21 @@ export class AvailableListComponent implements OnInit {
     this.cart.push(product)
     localStorage.setItem('cart', JSON.stringify(this.cart))
     this._cartSubject.announceCartChanged(true)
+  }
+
+  vaciar() {
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
+      width: '350px',
+      data: { pregunta: '¿Borrar toda la lista?', confirm: true }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        for (let i = 0; i < this.availables.length; i++) {
+          this._available.delete(this.availables[i].availableId).subscribe()
+        }
+        this.RecuperaDatos()
+      }
+    })
   }
 }

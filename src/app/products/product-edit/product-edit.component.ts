@@ -7,7 +7,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router'
-import { ProductsService } from './../../services/products/products.service'
+import { ProductsService } from '@services/products/products.service'
 import * as _ from 'lodash'
 
 @Component({
@@ -17,6 +17,7 @@ import * as _ from 'lodash'
 })
 export class ProductEditComponent implements OnInit {
   product: any
+  isNew = false
   form: FormGroup
   id: number
   shop: string
@@ -39,6 +40,7 @@ export class ProductEditComponent implements OnInit {
       if (this.id) {
         this.RecuperaDatos()
       } else {
+        this.isNew = true
         this.product = {}
         this.initForm()
       }
@@ -69,16 +71,39 @@ export class ProductEditComponent implements OnInit {
   onSubmit() {
     //
     console.log(this.form.value)
-    this._service.update(this.id, this.form.value).subscribe(res => {
-      for (let i = 0; i < this.checked.length; i++) {
-        this._service
-          .updateDay(this.id, i + 1, this.checked[i])
-          .subscribe(days => {
-            console.log(days)
-          })
+    if (this.isNew) {
+      const obj = {
+        name: this.form.value.name,
+        price: this.form.value.price,
+        description: this.form.value.description,
+        image: this.form.value.image,
+        shop: {
+          id: localStorage.getItem('admin_shop')
+        }
       }
-      this.RecuperaDatos()
-    })
-    console.log(this.checked)
+
+      this._service.add(this.id, obj).subscribe(res => {
+        for (let i = 0; i < this.checked.length; i++) {
+          this._service
+            .updateDay(res.id, i + 1, this.checked[i])
+            .subscribe(days => {
+              console.log(days)
+              this.RecuperaDatos()
+            })
+        }
+      })
+    } else {
+      this._service.update(this.id, this.form.value).subscribe(res => {
+        for (let i = 0; i < this.checked.length; i++) {
+          this._service
+            .updateDay(this.id, i + 1, this.checked[i])
+            .subscribe(days => {
+              console.log(days)
+              this.RecuperaDatos()
+            })
+        }
+      })
+      console.log(this.checked)
+    }
   }
 }

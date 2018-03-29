@@ -8,7 +8,7 @@ import { ProductsModule } from '../products/products.module'
 import { ListComponent } from './list/list.component'
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, homeRouting],
+  imports: [CommonModule, MaterialModule, ProductsModule, homeRouting],
   declarations: [HomeComponent, ListComponent]
 })
 export class HomeModule {}

@@ -6,7 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { MaterialModule } from './shared/material.module'
 import { AppComponent } from './app.component'
-import { AppRoutingModule } from './app.routing'
+// import { AppRoutingModule } from './app.routing'
+import { appRouting } from './app.routing'
 import { LayoutsModule } from './shared/layouts/layouts.module'
 import { AuthGuard } from './services/accounts/auth-guard.service'
 
@@ -30,7 +31,8 @@ import { CartSubject } from '@app/services/subjects/cart.subject.'
     HttpClientModule,
     MaterialModule,
     LayoutsModule,
-    AppRoutingModule,
+    // AppRoutingModule,
+    appRouting,
     FormsModule,
     ReactiveFormsModule
   ],

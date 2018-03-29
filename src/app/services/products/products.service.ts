@@ -22,8 +22,16 @@ export class ProductsService {
     return this.http$.get(`${this.apiUrl}/shops/${shopId}/products`)
   }
 
+  add(id: number, obj: any): Observable<any> {
+    return this.http$.post(`${this.apiUrl}/products`, obj)
+  }
+
   update(id: number, obj: any): Observable<any> {
     return this.http$.patch(`${this.apiUrl}/products/${id}`, obj)
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http$.delete(`${this.apiUrl}/products/${id}`)
   }
 
   updateDay(id: number, dayId: number, status: boolean): Observable<any> {

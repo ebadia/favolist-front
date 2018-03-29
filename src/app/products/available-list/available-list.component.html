@@ -1,18 +1,22 @@
-<div class="basic-container">
-  <h3>Productos de hoy</h3>
+<button *ngIf="ruta==='dash'" [disabled]="availables && availables.length === 0" mat-raised-button color="accent" class="full-width"
+  (click)="vaciar()">VACIAR</button>
 
-  <mat-card *ngFor="let product of availables">
+<div class="basic-container">
+
+  <mat-card *ngFor="let product of availables" (click)="action(product)">
     <mat-card-header>
+      <i *ngIf="ruta==='dash'" class="material-icons">delete</i>
+      <i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>
       <div class="header">{{product.name}}</div>
     </mat-card-header>
     <img mat-card-image src="product.image" *ngIf="product.image">
     <mat-card-content>
-      <button *ngIf="ruta==='dash'" mat-button (click)="delete(product)">
+      <!-- <button *ngIf="ruta==='dash'" mat-button (click)="delete(product)">
         <i class="material-icons">delete</i>
       </button>
       <button *ngIf="ruta==='new'" mat-button (click)="addToCart(product)">
         <i class="material-icons">shopping_basket</i>
-      </button>
+      </button> -->
     </mat-card-content>
 
     <!-- <mat-card-actions>
