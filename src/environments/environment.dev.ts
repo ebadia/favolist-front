@@ -8,5 +8,5 @@
 export const environment = {
   production: false,
   apiUrl: 'http://favolist-dev.eu-west-1.elasticbeanstalk.com/api/v1',
-  ws_url: 'http://favolist-dev.eu-west-1.elasticbeanstalk.com:8080'
+  ws_url: 'ws://favolist-dev.eu-west-1.elasticbeanstalk.com:8080'
 }

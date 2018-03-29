@@ -7,7 +7,7 @@
   </div>
   <div class="basic-container">
     <!-- <h3>Pedidos de hoy</h3> -->
-    <div *ngIf="orders || orders.length === 0">Hoy no tiene aún pedidos.</div>
+    <div *ngIf="orders && orders.length === 0">Hoy no tiene aún pedidos.</div>
     <app-order *ngFor="let order of orders" [order]="order" [status]="status"></app-order>
   </div>
 </div>
