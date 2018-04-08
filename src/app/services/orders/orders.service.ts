@@ -51,6 +51,10 @@ export class OrdersService {
     return this.http$.post(this.apiUrl + `/orders`, obj)
   }
 
+  get(orderId: number) {
+    return this.http$.get(this.apiUrl + `/orders/${orderId}`)
+  }
+
   addItem(id: number, obj: any) {
     return this.http$.post(this.apiUrl + `/orders/${id}/items`, obj)
   }

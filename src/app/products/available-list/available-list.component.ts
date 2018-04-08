@@ -13,7 +13,6 @@ import { AvailablesSubject } from '@services/subjects/availables.subject'
 import { MatSnackBar } from '@angular/material'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { ConfirmDeleteDialogComponent } from '@app/shared/layouts/confirm-delete.dialog'
-import * as _ from 'lodash'
 import { CartSubject } from '@app/services/subjects/cart.subject.'
 
 @Component({

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
-import { Compiler } from '@angular/core'
 
 import { environment } from '@env/environment'
 @Injectable()
@@ -15,7 +14,11 @@ export class UsersService {
   }
 
   getOne(id: number): Observable<any> {
-    return this.http$.get(`${this.apiUrl}/users/edit/${id}`)
+    return this.http$.get(`${this.apiUrl}/users/${id}`)
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http$.delete(`${this.apiUrl}/users/${id}`)
   }
 
   getAllDays(): Observable<any> {
@@ -24,6 +27,18 @@ export class UsersService {
 
   getShopsProducts(shopId: number): Observable<any> {
     return this.http$.get(`${this.apiUrl}/shops/${shopId}/users`)
+  }
+
+  create(obj: any): Observable<any> {
+    return this.http$.post(`${this.apiUrl}/users/`, obj)
+  }
+
+  addUserToShop(userId: number, obj: any): Observable<any> {
+    return this.http$.post(`${this.apiUrl}/users/${userId}/shops`, obj)
+  }
+
+  addUserToRole(userId: number, obj: any): Observable<any> {
+    return this.http$.post(`${this.apiUrl}/users/${userId}/roles`, obj)
   }
 
   update(id: number, obj: any): Observable<any> {

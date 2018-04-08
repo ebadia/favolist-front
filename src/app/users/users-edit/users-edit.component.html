@@ -1,7 +1,7 @@
 <div class="basic-container">
 
   <h3>
-    <span *ngIf="user">{{user.name}}</span>
+    Cliente: <span *ngIf="user">{{user.name}}</span>
   </h3>
 
   <form *ngIf="user" class="wide-form" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -10,29 +10,36 @@
 
     <section class="form-section">
       <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+        <mat-label>Usuario</mat-label>
+        <input matInput placeholder="Nombre de usuario" formControlName="username">
+      </mat-form-field>
+    </section>
+
+    <section class="form-section">
+      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
         <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Nombre" formControlName="name">
+        <input matInput placeholder="Nombre" formControlName="first_name">
       </mat-form-field>
     </section>
 
     <section class="form-section">
       <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
-        <mat-label>Precio</mat-label>
-        <input matInput type="number" placeholder="Precio" formControlName="price">
+        <mat-label>Apellidos</mat-label>
+        <input matInput placeholder="Nombre" formControlName="last_name">
       </mat-form-field>
     </section>
 
     <section class="form-section">
       <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
-        <mat-label>Descripción</mat-label>
-        <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email">
       </mat-form-field>
     </section>
 
     <section class="form-section">
       <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
-        <mat-label>Imagen</mat-label>
-        <input matInput placeholder="Imagen" formControlName="image">
+        <mat-label>Móvil</mat-label>
+        <input matInput placeholder="Móvil" formControlName="mobile">
       </mat-form-field>
     </section>
 

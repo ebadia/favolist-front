@@ -7,6 +7,8 @@
     </button>
   </mat-form-field>
 
+  <button mat-raised-button color="accent" (click)="new()">NUEVO</button>
+
   <mat-list>
     <mat-list-item *ngFor="let user of users | filter : filtro">
       <div class="full">
@@ -16,6 +18,12 @@
         <div>
           <!-- <button mat-button (click)="edit(user)">EDITA</button> -->
           <button mat-raised-button color="accent" (click)="order(user)">PEDIDO</button>
+          <button mat-raised-button color="accent" (click)="edit(user)" style="min-width: 36px; max-width: 56px;">
+            <i class="material-icons">mode_edit</i>
+          </button>
+          <button mat-raised-button color="accent" (click)="delete(user)" style="min-width: 36px; max-width: 56px;">
+            <i class="material-icons">delete</i>
+          </button>
         </div>
       </div>
       <mat-divider></mat-divider>

@@ -64,15 +64,22 @@ export class OrdersListComponent implements OnInit {
     const item = event.item
     this._orders.setItemDone(item.id).subscribe(ready => {
       this._orders.update(order.id, { status: 'OPENED' }).subscribe(opened => {
-        this._orders.getTodayOrders(+this.shop).subscribe(res => {
-          this.orders = res
-        })
+        this.RecuperaDatos()
       })
     })
   }
 
   orderReady(order: any) {
+    console.log('ORDER A CERRAR', order)
     this._orders.update(order.id, { status: 'READY' }).subscribe(opened => {
+      this._orders.get(order.id).subscribe(neworder => {
+        neworder['items'].forEach(item => {
+          item.status = 'READY'
+          this._orders.setItemDone(item.id).subscribe(ready => {
+            console.log('item updated')
+          })
+        })
+      })
       this._orders.sendMsg('order ready')
       this.RecuperaDatos()
     })

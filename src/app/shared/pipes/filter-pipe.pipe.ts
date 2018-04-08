@@ -14,9 +14,9 @@ export class FilterPipe implements PipeTransform {
     return items.filter( (it: string) => {
 
       if ( it['user'] ) {
-        return it['user']['last_name'].toUpperCase().includes(searchText)
+        return it['user']['last_name'].toUpperCase().includes(searchText) || it['user']['first_name'].toUpperCase().includes(searchText)
       } else {
-        return it['last_name'].toUpperCase().includes(searchText)
+        return it['last_name'].toUpperCase().includes(searchText) || it['first_name'].toUpperCase().includes(searchText)
       }
     })
   }
