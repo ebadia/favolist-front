@@ -27,6 +27,10 @@
   align-items: stretch;
 }
 
+.action-buttons {
+  justify-self: end;
+}
+
 mat-card-footer {
   margin: 5px;
 }
