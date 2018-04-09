@@ -33,6 +33,10 @@ export class OrdersService {
     return this.http$.patch(`${this.apiUrl}/orders/${orderId}`, order)
   }
 
+  delete(orderId: number): Observable<any> {
+    return this.http$.delete(`${this.apiUrl}/orders/${orderId}`)
+  }
+
   getTodayOrders(shopId: number): Observable<any> {
     return this.http$.get(`${this.apiUrl}/orders/today/shops/${shopId}`, {
       headers: new HttpHeaders().append('Cache-control', 'no-cache')

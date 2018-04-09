@@ -114,7 +114,8 @@ export class AvailableListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this._available.delete(product.availableId).subscribe(res => {
+        this._available.delete(product.availableId).subscribe(
+          res => {
           console.log('DELETED AVAILABLE', res)
           this.RecuperaDatos()
         })
@@ -136,10 +137,13 @@ export class AvailableListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        for (let i = 0; i < this.availables.length; i++) {
-          this._available.delete(this.availables[i].availableId).subscribe()
+        for (let i = 0; i <= this.availables.length; i++) {
+          this._available.delete(this.availables[i].availableId).subscribe(
+            () =>  this.availables = [],
+            () => this.availables = []
+          )
         }
-        this.RecuperaDatos()
+        // this.RecuperaDatos()
       }
     })
   }

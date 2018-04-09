@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { ConfirmDeleteDialogComponent } from '@shared/layouts/confirm-delete.dialog'
+import { MatDialog } from '@angular/material'
+import { OrdersService } from '@services/orders/orders.service'
 
 @Component({
   selector: 'app-order',
@@ -12,7 +15,7 @@ export class OrderComponent implements OnInit {
   @Output() closed: EventEmitter<any> = new EventEmitter()
   @Output() done: EventEmitter<any> = new EventEmitter()
 
-  constructor() {}
+  constructor(private dialog: MatDialog, private order$: OrdersService) {}
 
   ngOnInit() {}
 
@@ -34,5 +37,22 @@ export class OrderComponent implements OnInit {
 
   doDone(order: any, item: any) {
     this.done.emit({ order, item })
+  }
+
+  delete(order: any) {
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
+      width: '350px',
+      data: { pregunta: '¿Estas seguro de borrar el pedido?', confirm: true }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // this.order$.delete(order['id']).subscribe(
+        //   () => console.log('ORDER DELETED'),
+        //   () => console.log('CANNOT DELETE ORDER ')
+        // )
+      }
+    })
+
   }
 }

@@ -1,9 +1,5 @@
 <mat-card>
-  <button mat-button color="accent" *ngIf="status==='process'" (click)="orderReady(order)">PREPARADO</button>
-  <button mat-button color="accent" *ngIf="order.status==='READY'" (click)="orderClosed(order)">RECOGIDO</button>
-  <div *ngIf="order.status==='CLOSED'">
-    <i class="material-icons">assignment_turned_in</i>
-  </div>
+
   <mat-card-header>
     <mat-card-title>{{order.user.first_name}} {{order.user.last_name}} </mat-card-title>
     <mat-card-subtitle>{{order.user.mobile}}</mat-card-subtitle>
@@ -26,7 +22,13 @@
 
   <mat-card-actions>
     <mat-chip-list>
-     <mat-chip color="accent" selected="true">{{order.status}}</mat-chip>
+     <!--<mat-chip color="accent" selected="true">{{order.status}}</mat-chip>-->
+      <button mat-button color="accent" *ngIf="status==='process'" (click)="orderReady(order)">PREPARADO</button>
+      <button mat-button color="accent" *ngIf="status==='process'" (click)="delete(order)" class="float: right;"><i class="material-icons">delete</i></button>
+      <button mat-button color="accent" *ngIf="order.status==='READY'" (click)="orderClosed(order)">RECOGIDO</button>
+      <div *ngIf="order.status==='CLOSED'">
+        <i class="material-icons">assignment_turned_in</i>
+      </div>
     </mat-chip-list>
   </mat-card-actions>
 
