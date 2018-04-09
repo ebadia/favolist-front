@@ -5,7 +5,7 @@
       <mat-card-title>Entrar a Favolist</mat-card-title>
       <form [formGroup]="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
         <mat-form-field class="full-width">
-          <input type="text" matInput placeholder="Usuario" formControlName="username">
+          <input type="text" matInput placeholder="Usuario" formControlName="username" autocapitalize="none">
           <mat-error *ngIf="form.get('username').invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
