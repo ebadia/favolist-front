@@ -1,0 +1,58 @@
+<div>
+    <button class="full-width" [disabled]="!editing" mat-raised-button color="accent"
+            (click)="cancel()">CANCELAR
+    </button>
+</div>
+
+<div *ngIf="editing">
+  <div class="basic-container">
+
+    <h3>
+      <span *ngIf="product">{{product.name}}</span>
+    </h3>
+
+    <form *ngIf="product" class="wide-form" [formGroup]="form">
+
+      <!--<section class="form-section">-->
+        <!--<mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">-->
+          <!--<mat-label>Nombre</mat-label>-->
+          <!--<input matInput placeholder="Nombre" formControlName="name">-->
+        <!--</mat-form-field>-->
+      <!--</section>-->
+
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Precio</mat-label>
+          <input matInput type="number" placeholder="Precio" formControlName="price">
+        </mat-form-field>
+      </section>
+
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Stock</mat-label>
+          <input matInput placeholder="Stock" formControlName="stock">
+        </mat-form-field>
+      </section>
+
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Stock para Lista</mat-label>
+          <input matInput placeholder="Para listas" formControlName="stockOut">
+        </mat-form-field>
+      </section>
+
+      <section class="form-section">
+        <div class="button-container">
+          <button [disabled]="!editing" mat-raised-button color="primary"
+                  (click)="save()">GUARDAR
+          </button>
+          <button mat-raised-button color="accent" (click)="eliminar()">Eliminar</button>
+        </div>
+
+      </section>
+
+    </form>
+
+
+  </div>
+</div>

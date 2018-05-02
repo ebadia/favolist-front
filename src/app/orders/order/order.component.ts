@@ -14,6 +14,7 @@ export class OrderComponent implements OnInit {
   @Output() ready: EventEmitter<any> = new EventEmitter()
   @Output() closed: EventEmitter<any> = new EventEmitter()
   @Output() done: EventEmitter<any> = new EventEmitter()
+  @Output() delete: EventEmitter<any> = new EventEmitter()
 
   constructor(private dialog: MatDialog, private order$: OrdersService) {}
 
@@ -39,7 +40,7 @@ export class OrderComponent implements OnInit {
     this.done.emit({ order, item })
   }
 
-  delete(order: any) {
+  doDelete(order: any) {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
       width: '350px',
       data: { pregunta: '¿Estas seguro de borrar el pedido?', confirm: true }
@@ -47,10 +48,10 @@ export class OrderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // this.order$.delete(order['id']).subscribe(
-        //   () => console.log('ORDER DELETED'),
-        //   () => console.log('CANNOT DELETE ORDER ')
-        // )
+        this.order$.delete(order['id']).subscribe(
+          () => this.delete.emit(),
+          () => console.log('CANNOT DELETE ORDER ')
+        )
       }
     })
 

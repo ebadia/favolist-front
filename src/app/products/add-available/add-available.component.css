@@ -1,12 +1,11 @@
-.available-list {
-  width: 100%;
-  padding: 0px;
+.wrapper {
+  padding: 0px 10px;
 }
 
 .header {
   font-weight: bold;
   font-size: 1.2em;
-  margin-left: 2px;
+  margin-left: 10px;
 }
 
 .full-width {
@@ -14,16 +13,24 @@
   margin-bottom: 5px;
 }
 
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  width: 100%;
+}
+
 .button-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 0px;
-  width: 100%;
+  grid-gap: 2px;
+  margin-bottom: 10px;
 }
+
 mat-chip {
   font-size: 50%;
 }
 
 mat-card {
-  margin-bottom: 2px;
+  margin: 5px;
 }

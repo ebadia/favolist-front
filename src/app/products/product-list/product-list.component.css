@@ -19,14 +19,14 @@
 
 .full {
   display: grid;
-  grid-template-columns: auto repeat(3, 90px);
+  grid-template-columns: auto repeat(2, 90px);
   grid-gap: 5px;
   width: 100%;
 }
 
 .button-container {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 5px;
   width: 100%;
 }
@@ -40,5 +40,10 @@ mat-chip {
 }
 
 mat-card {
-  margin: 5px;
+  margin-bottom: 2px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 2px;
 }

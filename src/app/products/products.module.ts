@@ -8,7 +8,10 @@ import { ProductsComponent } from './products.component'
 import { ProductListComponent } from './product-list/product-list.component'
 import { ProductEditComponent } from './product-edit/product-edit.component'
 import { AvailableListComponent } from './available-list/available-list.component'
-import { ProductDashComponent } from './product-dash/product-dash.component'
+import { ProductDashComponent } from './product-dash/product-dash.component';
+import { AddAvailableComponent } from './add-available/add-available.component';
+import { ProductListDayComponent } from './product-list-day/product-list-day.component';
+import { AvailableEditComponent } from './available-edit/available-edit.component'
 
 @NgModule({
   imports: [
@@ -23,7 +26,10 @@ import { ProductDashComponent } from './product-dash/product-dash.component'
     ProductListComponent,
     ProductEditComponent,
     AvailableListComponent,
-    ProductDashComponent
+    ProductDashComponent,
+    AddAvailableComponent,
+    ProductListDayComponent,
+    AvailableEditComponent
   ],
   exports: [
     ProductsComponent,

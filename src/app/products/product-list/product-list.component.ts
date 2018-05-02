@@ -4,6 +4,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { ConfirmDeleteDialogComponent } from '@app/shared/layouts/confirm-delete.dialog'
 
 import * as moment from 'moment'
+import * as mt from 'moment-timezone'
+
 import { ShopsService } from '@services/shops/shops.service'
 import { AvailablesService } from '@services/availables/availables.service'
 import { AvailablesSubject } from '@services/subjects/availables.subject'
@@ -121,7 +123,7 @@ export class ProductListComponent implements OnInit {
   hoy() {
     this.products.forEach(product => {
       const isToday = product.days.find(day => {
-        return day.code === +moment().format('e')
+        return day.code === +mt().tz('Europe/Madrid').format('e') + 1
       })
 
       if (isToday) {

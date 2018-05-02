@@ -22,6 +22,7 @@ import { WebsocketService } from '@app/services/subjects/websocket.service'
 import { JWTInteceptor } from '@app/services/accounts/JWT.interceptor'
 import { UsersService } from '@app/services/users/users.service'
 import { CartSubject } from '@app/services/subjects/cart.subject.'
+import { AvailablesEditSubject } from '@services/subjects/availables-edit.subject'
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,6 +44,7 @@ import { CartSubject } from '@app/services/subjects/cart.subject.'
     ProductsService,
     AvailablesService,
     AvailablesSubject,
+    AvailablesEditSubject,
     OrdersService,
     WebsocketService,
     UsersService,

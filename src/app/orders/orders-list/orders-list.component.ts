@@ -95,6 +95,7 @@ export class OrdersListComponent implements OnInit {
   refresh() {
     this._orders.getTodayOrders(+this.shop).subscribe(res => {
       console.log('REFRESCA', res)
+      this._orders.sendMsg('item updated')
       this.RecuperaDatos()
     })
   }

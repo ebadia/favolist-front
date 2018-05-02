@@ -1,29 +1,45 @@
-<button *ngIf="ruta==='dash'" [disabled]="availables && availables.length === 0" mat-raised-button color="accent" class="full-width"
-  (click)="vaciar()">VACIAR</button>
-
-<div class="basic-container">
-
-  <mat-card *ngFor="let product of availables" (click)="action(product)">
-    <mat-card-header>
-      <i *ngIf="ruta==='dash'" class="material-icons">delete</i>
-      <i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>
-      <div class="header">{{product.name}}</div>
-    </mat-card-header>
-    <img mat-card-image src="product.image" *ngIf="product.image">
-    <mat-card-content>
-      <!-- <button *ngIf="ruta==='dash'" mat-button (click)="delete(product)">
-        <i class="material-icons">delete</i>
+<div class="available-list">
+  <div class="button-container">
+    <div *ngIf="ruta!=='add-availables'">
+      <button mat-mini-fab color="accent"
+              (click)="add()"><i class="material-icons">mode_edit</i></button>
+      <button [disabled]="availables && availables.length === 0" mat-mini-fab color="accent"
+              (click)="vaciar()"><i class="material-icons">delete</i>
       </button>
-      <button *ngIf="ruta==='new'" mat-button (click)="addToCart(product)">
-        <i class="material-icons">shopping_basket</i>
-      </button> -->
-    </mat-card-content>
+    </div>
+  </div>
+  <div *ngIf="ruta==='add-availables'">
+    <button [disabled]="isEditing"  mat-raised-button color="primary" class="full-width" (click)="vaciar()"><i class="material-icons">delete</i>
+    </button>
+  </div>
 
-    <!-- <mat-card-actions>
-    </mat-card-actions>
+  <div>
+    <div>
+      <div *ngIf="ruta!=='add-availables'">{{day}}</div>
+      <div *ngIf="ruta!=='add-availables'">{{dayName}}</div>
 
-    <mat-card-footer>
-    </mat-card-footer> -->
 
-  </mat-card>
+      <mat-card *ngFor="let product of availables" (click)="action(product)">
+        <mat-card-header>
+          <!--<i *ngIf="ruta==='add-availables'" class="material-icons" (click)="action(product)">delete</i>-->
+          <!--<i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>-->
+          <!--<h4 class="header">{{product.name}}</h4>-->
+          <!--<span class="small">{{product.stock}} # {{product.stockOut}}</span>-->
+        </mat-card-header>
+        <img mat-card-image src="product.image" *ngIf="product.image">
+        <mat-card-content>
+          <i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>
+          <h4>{{product.name}}</h4>
+          <span class="small">{{product.stock}} # {{product.stockOut}}</span>
+        </mat-card-content>
+
+        <!-- <mat-card-actions>
+        </mat-card-actions>
+
+        <mat-card-footer>
+        </mat-card-footer> -->
+
+      </mat-card>
+    </div>
+  </div>
 </div>

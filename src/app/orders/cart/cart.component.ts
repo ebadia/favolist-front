@@ -75,16 +75,18 @@ export class CartComponent implements OnInit {
   }
 
   saveItems(orderId: number, items: any[]) {
+    console.log('ORDER', orderId)
     for (let i = 0; i < items.length; i++) {
       this._orders
         .addItem(orderId, {
           quantity: 1,
           product: { id: items[i].productId }
         })
-        .subscribe(res => console.log('Product added'))
+        .subscribe(res => this._orders.sendMsg('item updated')
+        )
     }
     this.vaciaCarro()
-    this._router.navigate(['favolist', 'orders-list'])
+    // this._router.navigate(['favolist', 'orders-list'])
   }
 
   vaciar() {

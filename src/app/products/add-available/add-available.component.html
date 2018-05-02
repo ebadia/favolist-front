@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="available-list">
+    <div class="button-container">
+      <button mat-raised-button color="accent"
+              (click)="back()"><i class="material-icons">arrow_back</i></button>
+      <div>{{day}}<br>{{dayName}}</div>
+    </div>
+
+    <div class="container">
+      <app-product-list-day [date]="day"></app-product-list-day>
+      <app-available-list [date]="day"></app-available-list>
+      <app-available-edit></app-available-edit>
+    </div>
+  </div>
+</div>

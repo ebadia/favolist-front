@@ -1,8 +1,14 @@
-<div class="container">
-  <div class="products">
-    <app-product-list></app-product-list>
+<div class="dash">
+  <div class="button-container">
+    <button mat-raised-button color="primary" class="full-width" (click)="prevWeek()"><i class="material-icons">arrow_back</i>
+    </button>
+    <button mat-raised-button color="primary" class="full-width" (click)="today()"><i class="material-icons">arrow_downward</i>
+    </button>
+    <button mat-raised-button color="primary" class="full-width" (click)="nextWeek()"><i class="material-icons">arrow_forward</i>
+    </button>
   </div>
-  <div class="today">
-    <app-available-list></app-available-list>
+
+  <div class="container">
+    <app-available-list *ngFor="let date of days" [date]="date.day"></app-available-list>
   </div>
 </div>

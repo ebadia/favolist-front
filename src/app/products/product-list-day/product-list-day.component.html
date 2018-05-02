@@ -1,0 +1,17 @@
+<div class="producte">
+  <button mat-raised-button color="primary" class="full-width" (click)="hoy()">DEL DIA
+  </button>
+
+  <mat-card *ngFor="let product of products" (click)="add(product)">
+
+    <mat-card-content class="full">
+      <span>
+        <h4>{{product.name}}</h4>
+        <span class="small" *ngFor="let day of product.days">{{day.name}} </span>
+      </span>
+      <!--<button mat-raised-button (click)="edit(product)"><i class="material-icons">mode_edit</i></button>-->
+      <!--<button mat-raised-button color="warn" (click)="addAvailable(product)">HOY</button>-->
+    </mat-card-content>
+
+  </mat-card>
+</div>

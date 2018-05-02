@@ -65,7 +65,7 @@ export class ProductEditComponent implements OnInit {
       image: [data ? data.image : ''],
       shopId: [data ? data.shopId : '', Validators.required]
     })
-    // console.log('FORM DATA >>> ', this.form)
+    console.log('FORM DATA >>> ', this.form)
   }
 
   onSubmit() {

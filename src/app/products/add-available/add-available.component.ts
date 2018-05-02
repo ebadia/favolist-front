@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core'
 import * as moment from 'moment'
-import * as _ from 'lodash'
 import {
   Router,
   CanActivate,
@@ -15,22 +14,20 @@ import { MatSnackBar } from '@angular/material'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { ConfirmDeleteDialogComponent } from '@app/shared/layouts/confirm-delete.dialog'
 import { CartSubject } from '@app/services/subjects/cart.subject.'
-import { AvailablesEditSubject } from '@services/subjects/availables-edit.subject'
 
 @Component({
-  selector: 'app-available-list',
-  templateUrl: './available-list.component.html',
-  styleUrls: ['./available-list.component.css']
+  selector: 'app-add-available',
+  templateUrl: './add-available.component.html',
+  styleUrls: ['./add-available.component.css']
 })
-export class AvailableListComponent implements OnInit {
-  @Input() date: any
+export class AddAvailableComponent implements OnInit {
+  day: string
+  dayName: string
   shop: string
   availables: any[]
   ruta: string
   cart: any[]
-  day: string
-  dayName: string
-  isEditing = false
+  date: any
 
   constructor(
     private _available: AvailablesService,
@@ -39,8 +36,7 @@ export class AvailableListComponent implements OnInit {
     private dialog: MatDialog,
     private _router: Router,
     private _route: ActivatedRoute,
-    private _cartSubject: CartSubject,
-    private _availableEditSubject: AvailablesEditSubject
+    private _cartSubject: CartSubject
   ) {
     this._availableSubject.availableAnnounced$.subscribe(changed => {
       if (changed) {
@@ -62,22 +58,26 @@ export class AvailableListComponent implements OnInit {
         )
       }
     })
-    this._availableEditSubject.availableEditAnnounced$.subscribe(
-      changed => this.isEditing = changed
-    )
   }
 
-
-
   ngOnInit() {
+    moment.locale('es')
+    this._route.params.subscribe(
+      params => {
+        if ( params.day ) {
+          this.day = params.day
+        } else {
+          this.day =  moment(this.day).format('YYYY-MM-DD')
+        }
+        this.dayName = moment(this.day).format('dddd')
+        console.log('DAY FROM ADD', this.day)
+      }
+    )
+
     this._route.url.subscribe(res => {
       // console.log('ROUTA', res[0].path)
       this.ruta = res[0].path
-      console.log('THE ROUTE', this.ruta)
     })
-
-    this.day =  moment(this.date).format('YYYY-MM-DD')
-    this.dayName = moment(this.date).format('dddd')
 
     this.shop = localStorage.getItem('admin_shop')
     this.cart = JSON.parse(localStorage.getItem('cart')) || []
@@ -91,7 +91,7 @@ export class AvailableListComponent implements OnInit {
   }
 
   private RecuperaDatos() {
-    this._available.getFromShopInDate(+this.shop, this.date).subscribe(
+    this._available.getFromShopInDate(+this.shop, this.day).subscribe(
       res => {
         this.availables = res
       },
@@ -113,8 +113,8 @@ export class AvailableListComponent implements OnInit {
       case 'new':
         this.addToCart(product)
         break
-      case 'add-availables':
-        this.edit(product)
+      case 'dash':
+        this.delete(product)
         break
 
       default:
@@ -168,24 +168,14 @@ export class AvailableListComponent implements OnInit {
     })
   }
 
-  add() {
-    console.log('ADD AVAILABLE ON', this.date)
-    localStorage.setItem('date', this.date)
-    this._router.navigate(['favolist', 'products', 'add-availables', this.date])
+  add(date: any) {
+    console.log('ADD AVAILABLE ON', date.day)
+    localStorage.setItem('date', date.day)
+    this._router.navigate(['favolist', 'products', 'add-availables', this.day])
   }
 
-  edit(product: any) {
-    if ( !this.isEditing ) {
-      console.log('EDIT THIS PRODUCT', product)
-      if ( _.isNull(localStorage.getItem('edit-available')) ){
-        localStorage.setItem('edit-available', JSON.stringify(product))
-        this._availableEditSubject.announceEditAvailable(true)
-      } else {
-        this._availableEditSubject.announceEditAvailable(false)
-        localStorage.setItem('edit-available', null)
-        localStorage.setItem('edit-available', JSON.stringify(product))
-        this._availableEditSubject.announceEditAvailable(true)
-      }
-    }
+  back() {
+    this._router.navigate(['favolist', 'products', 'dash'])
   }
 }
+
