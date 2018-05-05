@@ -63,6 +63,10 @@ export class OrdersService {
     return this.http$.post(this.apiUrl + `/orders/${id}/items`, obj)
   }
 
+  updateItem(id: number, obj: any) {
+    return this.http$.patch(this.apiUrl + `/items/${id}`, obj)
+  }
+
   orderedToday(userId: string, shopId: number): Observable<any> {
     return this.http$.get(
       this.apiUrl + `/orders/today/users/${userId}/shops/${shopId}`

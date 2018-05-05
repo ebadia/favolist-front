@@ -21,8 +21,9 @@ import { OrdersService } from '@app/services/orders/orders.service'
 import { WebsocketService } from '@app/services/subjects/websocket.service'
 import { JWTInteceptor } from '@app/services/accounts/JWT.interceptor'
 import { UsersService } from '@app/services/users/users.service'
-import { CartSubject } from '@app/services/subjects/cart.subject.'
+import { CartSubject } from '@app/services/subjects/cart.subject'
 import { AvailablesEditSubject } from '@services/subjects/availables-edit.subject'
+import { CartDateSubject } from '@services/subjects/cart-date.subject'
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,6 +50,7 @@ import { AvailablesEditSubject } from '@services/subjects/availables-edit.subjec
     WebsocketService,
     UsersService,
     CartSubject,
+    CartDateSubject,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

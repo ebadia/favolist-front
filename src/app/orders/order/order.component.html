@@ -1,9 +1,10 @@
 <mat-card>
 
   <mat-card-header>
-    <mat-card-title>{{order.user.first_name}} {{order.user.last_name}} </mat-card-title>
-    <mat-card-subtitle>{{order.user.mobile}}</mat-card-subtitle>
-    <mat-card-subtitle>{{order.hour}}</mat-card-subtitle>
+    <mat-card-title (click)="goto(order.user)">{{order.user.first_name}} {{order.user.last_name}} </mat-card-title>
+    <!--<mat-card-subtitle>{{order.user.mobile}}</mat-card-subtitle>-->
+    <!--<mat-card-subtitle>{{order.hour}}</mat-card-subtitle>-->
+    <mat-card-subtitle>{{order.day}}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
@@ -23,9 +24,10 @@
   <mat-card-actions>
     <mat-chip-list>
      <!--<mat-chip color="accent" selected="true">{{order.status}}</mat-chip>-->
-      <button mat-button color="accent" *ngIf="status==='process'" (click)="orderReady(order)">PREPARADO</button>
+      <button mat-button color="accent" *ngIf="ruta==='new'" (click)="edit(order)">EDIT</button>
+      <button mat-button color="accent" *ngIf="status==='process'" (click)="orderReady(order)">PREP</button>
       <button mat-button color="accent" *ngIf="status==='process'" (click)="doDelete(order)" class="float: right;"><i class="material-icons">delete</i></button>
-      <button mat-button color="accent" *ngIf="order.status==='READY'" (click)="orderClosed(order)">RECOGIDO</button>
+      <button mat-button color="accent" *ngIf="order.status==='READY' || status==='process'" (click)="orderClosed(order)">RECO</button>
       <div *ngIf="order.status==='CLOSED'">
         <i class="material-icons">assignment_turned_in</i>
       </div>

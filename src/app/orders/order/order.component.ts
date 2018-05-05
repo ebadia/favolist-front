@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { ConfirmDeleteDialogComponent } from '@shared/layouts/confirm-delete.dialog'
 import { MatDialog } from '@angular/material'
 import { OrdersService } from '@services/orders/orders.service'
+import { ActivatedRoute, Router } from '@angular/router'
+import { CartSubject } from '@services/subjects/cart.subject'
 
 @Component({
   selector: 'app-order',
@@ -16,9 +18,23 @@ export class OrderComponent implements OnInit {
   @Output() done: EventEmitter<any> = new EventEmitter()
   @Output() delete: EventEmitter<any> = new EventEmitter()
 
-  constructor(private dialog: MatDialog, private order$: OrdersService) {}
+  ruta: string
 
-  ngOnInit() {}
+  constructor(
+    private dialog: MatDialog,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private order$: OrdersService,
+    private _cartSubject: CartSubject,
+  ) {}
+
+  ngOnInit() {
+    this._route.url.subscribe(res => {
+      // console.log('ROUTA', res[0].path)
+      this.ruta = res[0].path
+      console.log('THE ROUTE', this.ruta)
+    })
+  }
 
   orderReady(order: any) {
     this.ready.emit(order)
@@ -26,6 +42,28 @@ export class OrderComponent implements OnInit {
     //   this._orders.sendMsg('order ready')
     //   this.RecuperaDatos()
     // })
+  }
+
+  edit( order: any ) {
+    console.log('EDIT ORDER', order)
+    const newOrderItem = []
+    order.items.forEach( item => {
+      const obj = {
+        availablePrice: item.product.price,
+        availableStock: item.product.stockOut,
+        availableStockOut: item.product.stockOut,
+        name: item.product.name,
+        price: item.product.price,
+        productId: item.product.id,
+        quantity: item.quantity,
+        itemId: item.id
+      }
+      newOrderItem.push(obj)
+    })
+    localStorage.setItem('cart', JSON.stringify(newOrderItem))
+    localStorage.setItem('order-edit', JSON.stringify(order))
+    this._cartSubject.announceCartChanged(true)
+
   }
 
   orderClosed(order: any) {
@@ -55,5 +93,9 @@ export class OrderComponent implements OnInit {
       }
     })
 
+  }
+
+  goto(user: any) {
+    this._router.navigate(['favolist', 'orders', 'new', user.id])
   }
 }

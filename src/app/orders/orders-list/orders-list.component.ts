@@ -19,6 +19,7 @@ export class OrdersListComponent implements OnInit {
   shop: string
   status: string
   filtro: string
+  ruta: string
 
   constructor(
     private _orders: OrdersService,
@@ -40,6 +41,13 @@ export class OrdersListComponent implements OnInit {
       this.status = params['status']
       this.RecuperaDatos()
     })
+    //
+    this._route.url.subscribe(res => {
+      // console.log('ROUTA', res[0].path)
+      this.ruta = res[0].path
+      console.log('THE ROUTE', this.ruta)
+    })
+
   }
 
   private RecuperaDatos() {

@@ -11,3 +11,17 @@
 mat-checkbox {
   margin-right: 10px;
 }
+
+h1 {
+  border-bottom: black 1px dotted;
+  padding: 10px;
+  margin: 10px;
+}
+
+.container {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px;
+
+}

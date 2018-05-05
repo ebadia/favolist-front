@@ -1,6 +1,9 @@
+<div *ngIf="user">
+  <h1>Pedido para {{user.first_name}} {{user.last_name}}</h1>
+</div>
 <div class="container">
   <div>
-    <app-available-list></app-available-list>
+    <app-available-list [date]="day"></app-available-list>
   </div>
   <div class="today">
     <app-cart></app-cart>

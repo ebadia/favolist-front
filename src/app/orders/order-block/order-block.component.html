@@ -1,0 +1,11 @@
+<mat-form-field class="search-field">
+  <input matInput type="text" placeholder="Buscar" [(ngModel)]="filtro" />
+  <button mat-button *ngIf="filtro" matSuffix mat-icon-button aria-label="Clear" (click)="filtro=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<div class="orders-container">
+  <app-order *ngFor="let order of orders | filter : filtro" [order]="order" [status]="status" (ready)="doOrderReady($event)"
+             (closed)="doOrderClosed($event)" (done)="doDone($event)" (delete)="doRefresh()"></app-order>
+</div>

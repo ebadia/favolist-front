@@ -1,6 +1,6 @@
 <div class="available-list">
   <div class="button-container">
-    <div *ngIf="ruta!=='add-availables'">
+    <div *ngIf="ruta!=='add-availables' && ruta!=='new'">
       <button mat-mini-fab color="accent"
               (click)="add()"><i class="material-icons">mode_edit</i></button>
       <button [disabled]="availables && availables.length === 0" mat-mini-fab color="accent"
@@ -11,6 +11,18 @@
   <div *ngIf="ruta==='add-availables'">
     <button [disabled]="isEditing"  mat-raised-button color="primary" class="full-width" (click)="vaciar()"><i class="material-icons">delete</i>
     </button>
+  </div>
+  <div *ngIf="ruta==='new'">
+    <div class="button-container-four">
+      <button mat-raised-button color="primary" class="full-width" (click)="ayer()"><i class="material-icons">arrow_back</i></button>
+      <button mat-raised-button color="primary" class="full-width" (click)="hoy()"><i class="material-icons">arrow_downward</i></button>
+      <button mat-raised-button color="primary" class="full-width" (click)="tomorrow()"><i class="material-icons">arrow_forward</i></button>
+      <div>
+        <input matInput [matDatepicker]="picker" placeholder="" class="picker" [value]="date" (dateChange)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </div>
   </div>
 
   <div>
@@ -28,9 +40,9 @@
         </mat-card-header>
         <img mat-card-image src="product.image" *ngIf="product.image">
         <mat-card-content>
-          <i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>
+          <!--<i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>-->
           <h4>{{product.name}}</h4>
-          <span class="small">{{product.stock}} # {{product.stockOut}}</span>
+          <span class="small">{{product.availableStock}} # {{product.availableStockOut}}</span>
         </mat-card-content>
 
         <!-- <mat-card-actions>

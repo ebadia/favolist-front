@@ -8,6 +8,8 @@ import {
 } from '@angular/router'
 import { OrdersService } from './../../services/orders/orders.service'
 import * as _ from 'lodash'
+import * as moment from 'moment'
+import { UsersService } from '@services/users/users.service'
 
 @Component({
   selector: 'app-orders-new',
@@ -18,16 +20,20 @@ export class OrdersNewComponent implements OnInit {
   shop: string
   client: string
   today: any[]
+  day: string
   orders: any[]
   status: string
+  user: any
 
   constructor(
     private _orders: OrdersService,
+    private _usersSrv: UsersService,
     private _router: Router,
     private _route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    this.day = moment().format('YYYY-MM-DD')
     this.shop = localStorage.getItem('admin_shop')
     //
     this._route.params.subscribe(params => {
@@ -49,5 +55,9 @@ export class OrdersNewComponent implements OnInit {
       })
       console.log('PEDIDOS', this.orders)
     })
+
+    this._usersSrv.getOne(+this.client).subscribe(
+      res => this.user = res
+    )
   }
 }

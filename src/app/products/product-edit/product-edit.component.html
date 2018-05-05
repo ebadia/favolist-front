@@ -1,54 +1,73 @@
-<div class="basic-container">
+<h1 style="text-align: center;">
+  <span *ngIf="product">{{product.name}}</span>
+</h1>
 
-  <h3>
-    <span *ngIf="product">{{product.name}}</span>
-  </h3>
+<div class="container">
+  <div>
+    <form *ngIf="product" class="wide-form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-  <form *ngIf="product" class="wide-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="shopId">
 
-    <input type="hidden" formControlName="shopId">
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" formControlName="name">
+        </mat-form-field>
+      </section>
 
-    <section class="form-section">
-      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
-        <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Nombre" formControlName="name">
-      </mat-form-field>
-    </section>
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Precio</mat-label>
+          <input matInput type="number" placeholder="Precio" formControlName="price">
+        </mat-form-field>
+      </section>
 
-    <section class="form-section">
-      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
-        <mat-label>Precio</mat-label>
-        <input matInput type="number" placeholder="Precio" formControlName="price">
-      </mat-form-field>
-    </section>
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Stock por defecto</mat-label>
+          <input matInput type="number" placeholder="Stock" formControlName="stock">
+        </mat-form-field>
+      </section>
 
-    <section class="form-section">
-      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
-        <mat-label>Descripción</mat-label>
-        <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
-      </mat-form-field>
-    </section>
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Stock en listas por defecto</mat-label>
+          <input matInput type="number" placeholder="Stock en lista" formControlName="stockOut">
+        </mat-form-field>
+      </section>
 
-    <section class="form-section">
-      <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
-        <mat-label>Imagen</mat-label>
-        <input matInput placeholder="Imagen" formControlName="image">
-      </mat-form-field>
-    </section>
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
+        </mat-form-field>
+      </section>
+
+      <section class="form-section">
+        <mat-form-field class="form-field" [floatLabel]="form.value.floatLabel">
+          <mat-label>Imagen</mat-label>
+          <input matInput placeholder="Imagen" formControlName="image">
+        </mat-form-field>
+      </section>
 
 
-    <section class="form-section">
-      <button mat-raised-button type="submit" class="submit-button" color="primary">Enviar</button>
-    </section>
+      <section class="form-section">
+        <button mat-raised-button type="submit" class="submit-button" color="primary">Enviar</button>
+      </section>
 
-  </form>
+    </form>
+  </div>
 
-
-  <div class="wide-form" *ngIf="checked">
-    <h5>Disponible:</h5>
-    <mat-checkbox *ngFor="let day of days" [(ngModel)]="checked[day.code]">{{day.name}}</mat-checkbox>
+  <div>
+    <app-product-defaults [product]="product"></app-product-defaults>
   </div>
 
 
+
+
+  <!--<div class="wide-form" *ngIf="checked">-->
+    <!--<h5>Disponible:</h5>-->
+    <!--<mat-checkbox *ngFor="let day of days" [(ngModel)]="checked[day.code]">{{day.name}}</mat-checkbox>-->
+  <!--</div>-->
 
 </div>

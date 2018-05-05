@@ -8,6 +8,7 @@ import { MatDialog, MatSnackBar } from '@angular/material'
 
 import * as moment from 'moment'
 import * as mt from 'moment-timezone'
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-product-list-day',
@@ -67,11 +68,15 @@ export class ProductListDayComponent implements OnInit {
     )
   }
 
-  addAvailable(product, day) {
-    // console.log(product)
+  addAvailable(product: any, dayObj: any, day: string) {
+    console.log('ADD AVAILABLE ', product)
+    console.log('ADD AVAILABLE DAY', dayObj)
+    console.log('ADD AVAILABLE DAY LOGIC', !_.isNull(dayObj))
+
     const obj = {
       day,
-      stock: 0,
+      stock: !_.isNull(dayObj) ? dayObj.stock : product.stock,
+      stockOut: !_.isNull(dayObj) ? dayObj.stockOut : product.stockOut,
       product: {
         id: product.id
       }
@@ -101,15 +106,15 @@ export class ProductListDayComponent implements OnInit {
         console.log('soy el dia', +mt.tz(this.date, 'Europe/Madrid').format('e') )
         return day.code === +mt.tz(this.date, 'Europe/Madrid').format('e')
       })
-
-      if (isToday) {
-        this.addAvailable(product, this.date)
+      console.log('IS TODAY', isToday)
+      if (isToday && isToday.stock > 0) {
+        this.addAvailable(product, isToday, this.date)
       }
     })
   }
 
   add(product: any) {
-    this.addAvailable(product, this.day)
+    this.addAvailable(product, null, this.day)
   }
 
 }

@@ -20,10 +20,26 @@
   grid-gap: 0px;
   width: 100%;
 }
+.button-container-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0px;
+  width: 100%;
+}
+.button-container-four {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr;
+  grid-gap: 0px;
+  width: 100%;
+}
 mat-chip {
   font-size: 50%;
 }
 
 mat-card {
   margin-bottom: 2px;
+}
+
+.picker {
+  display: none;
 }

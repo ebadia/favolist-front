@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms'
 import { OrdersNewComponent } from './orders-new/orders-new.component'
 import { ProductsModule } from '@app/products/products.module'
 import { OrderComponent } from './order/order.component'
-import { CartComponent } from './cart/cart.component'
+import { CartComponent } from './cart/cart.component';
+import { OrderBlockComponent } from './order-block/order-block.component'
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { CartComponent } from './cart/cart.component'
     OrdersListComponent,
     OrdersNewComponent,
     OrderComponent,
-    CartComponent
+    CartComponent,
+    OrderBlockComponent
   ],
   exports: [OrdersListComponent]
 })

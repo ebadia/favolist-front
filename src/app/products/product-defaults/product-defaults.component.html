@@ -1,0 +1,17 @@
+<div class="wide-form" *ngIf="checked">
+  <h5>Disponible:</h5>
+  <!--<mat-checkbox *ngFor="let day of days" [(ngModel)]="checked[day.code]">{{day.name}}</mat-checkbox>-->
+  <div class="container" *ngFor="let day of checked; let i = index">
+    <div>{{day.name}}</div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="stock total" [(ngModel)]="day.stock" (blur)="updateStock(i)">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="stock para pedidos" [(ngModel)]="day.stockOut" (blur)="updateStock(i)">
+      </mat-form-field>
+    </div>
+  </div>
+</div>

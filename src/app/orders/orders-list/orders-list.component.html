@@ -1,24 +1,22 @@
-<div class="container">
+<div>
 
   <h1 *ngIf="status==='process'">Pedidos pendientes</h1>
   <h1 *ngIf="status==='ready'">Preparados para recoger</h1>
   <h1 *ngIf="status==='closed'">Pedidos recogidos</h1>
 
-  <div class="button-container">
-    <button class="btn-full" mat-raised-button (click)="order()" color="primary">NUEVO</button>
-    <button class="btn-full" mat-raised-button (click)="refresh()">REFRESCA</button>
-  </div>
+  <div class="container">
+    <div>
+      <app-order-block [orders]="orders" [status]="status" (done)="done($event)" (orderReady)="orderReady($event)" (orderClosed)="orderClosed($event)" (refresh)="refresh()"></app-order-block>
+    </div>
 
-  <mat-form-field class="search-field">
-    <input matInput type="text" placeholder="Buscar" [(ngModel)]="filtro" />
-    <button mat-button *ngIf="filtro" matSuffix mat-icon-button aria-label="Clear" (click)="filtro=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+    <div *ngIf="status==='process'">
+      <app-order-block [orders]="orders" [status]="status" (done)="done($event)" (orderReady)="orderReady($event)" (orderClosed)="orderClosed($event)" (refresh)="refresh()"></app-order-block>
+    </div>
 
-  <div class="orders-container">
-    <app-order *ngFor="let order of orders | filter : filtro" [order]="order" [status]="status" (ready)="orderReady($event)"
-      (closed)="orderClosed($event)" (done)="done($event)" (delete)="refresh()"></app-order>
+    <div *ngIf="status==='process'">
+      <app-order-block [orders]="orders" [status]="status" (done)="done($event)" (orderReady)="orderReady($event)" (orderClosed)="orderClosed($event)" (refresh)="refresh()"></app-order-block>
+    </div>
 
   </div>
+
 </div>

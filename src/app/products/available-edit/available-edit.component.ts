@@ -47,8 +47,8 @@ export class AvailableEditComponent implements OnInit {
       price: [ data ?
         ( data.availablePrice ? data.availablePrice : data.price )
         : 0],
-      stock: [data ? data.stock : 0],
-      stockOut: [data ? data.stockOut : 0],
+      availableStock: [data ? data.availableStock : 0],
+      availableStockOut: [data ? data.availableStockOut : 0],
       shopId: [data ? data.shopId : 0],
       id: [data ? data.id : 0],
     })
