@@ -72,6 +72,15 @@ export class StockDayComponent implements OnInit {
   }
 
   ngOnInit() {
+    // update from SOCKET
+    this._service.messages.subscribe(msg => {
+      if (msg.event === 'order ready') {
+        console.log('I HAVE RECEIVED AN ITEM UPDATED MSG I MUST REFRESH...')
+        console.log(msg)
+        setTimeout(() => this.RecuperaDatos(), 2000)
+      }
+    })
+
     this._route.url.subscribe(res => {
       // console.log('ROUTA', res[0].path)
       this.ruta = res[0].path

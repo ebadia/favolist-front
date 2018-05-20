@@ -6,13 +6,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router'
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { trigger, state, style, animate, transition } from '@angular/animations'
 import { CartSubject } from '@services/subjects/cart.subject'
 import { CartDateSubject } from '@services/subjects/cart-date.subject'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
@@ -23,19 +17,17 @@ import { OrdersService } from '@app/services/orders/orders.service'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/observable/forkJoin'
 
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
   animations: [
-    trigger('flyInOut',
-      [
-        transition('void => *', [
-        style({transform: 'translateY(-100%)'}),
+    trigger('flyInOut', [
+      transition('void => *', [
+        style({ transform: 'translateY(-100%)' }),
         animate(100)
       ])
-    ]),
+    ])
   ]
 })
 export class CartComponent implements OnInit {
@@ -56,7 +48,8 @@ export class CartComponent implements OnInit {
     })
     this._cartDateSubject.cartDateChangedAnnounced().subscribe(res => {
       if (res) {
-        this.date = localStorage.getItem('order-date') || moment().format('YYYY-MM-DD')
+        this.date =
+          localStorage.getItem('order-date') || moment().format('YYYY-MM-DD')
         localStorage.removeItem('cart')
         this.cart = []
       }
@@ -72,7 +65,8 @@ export class CartComponent implements OnInit {
     })
     this._cartDateSubject.cartDateChangedAnnounced().subscribe(res => {
       if (res) {
-        this.date = localStorage.getItem('order-date') || moment().format('YYYY-MM-DD')
+        this.date =
+          localStorage.getItem('order-date') || moment().format('YYYY-MM-DD')
       }
     })
   }
@@ -110,18 +104,18 @@ export class CartComponent implements OnInit {
     const isEdit = localStorage.getItem('order-edit')
     console.log('ORDER EDITION', isEdit)
 
-    if ( !_.isNull(isEdit) && !_.isUndefined(isEdit) ) {
+    if (!_.isNull(isEdit) && !_.isUndefined(isEdit)) {
       console.log('NO CREA ORDER')
       const items = JSON.parse(localStorage.getItem('cart'))
       this.saveItems(JSON.parse(isEdit).id, items)
     } else {
       console.log('CREA ORDER')
       this._orders.add(order).subscribe(
-      neworder => {
-        const items = JSON.parse(localStorage.getItem('cart'))
-        console.log('CREA ITEMS', items)
+        neworder => {
+          const items = JSON.parse(localStorage.getItem('cart'))
+          console.log('CREA ITEMS', items)
 
-        this.saveItems(neworder['id'], items)
+          this.saveItems(neworder['id'], items)
           localStorage.removeItem('order-date')
         },
         error => console.log('error creating order', error)
@@ -138,47 +132,43 @@ export class CartComponent implements OnInit {
     for (let i = 0; i < items.length; i++) {
       // console.log('ONE ORDER ITEM', items[i])
       let isInOrder = null
-      if ( localStorage.getItem('order-edit') ) {
-        isInOrder = _.find( JSON.parse(localStorage.getItem('order-edit')).items, ['product.id', items[i].productId ] )
+      if (localStorage.getItem('order-edit')) {
+        isInOrder = _.find(
+          JSON.parse(localStorage.getItem('order-edit')).items,
+          ['product.id', items[i].productId]
+        )
       }
 
       console.log('IN ORDER', isInOrder)
 
-      if ( !_.isNull(isInOrder) && !_.isUndefined(isInOrder) ) {
+      if (!_.isNull(isInOrder) && !_.isUndefined(isInOrder)) {
         // item IS in order-edit UPDATE
         console.log('IN ORDER')
         allItems.push(
-          this._orders
-            .updateItem(items[i].itemId, {
-              quantity: items[i].quantity,
-              product: { id: items[i].productId }
-            })
+          this._orders.updateItem(items[i].itemId, {
+            quantity: items[i].quantity,
+            product: { id: items[i].productId }
+          })
         )
       } else {
         // item NOT in order-edit NEW
         console.log('NOT IN ORDER')
         allItems.push(
-          this._orders
-            .addItem(orderId, {
-              quantity: items[i].quantity,
-              place: localStorage.getItem('current_order_place'),
-              product: { id: items[i].productId }
-            })
+          this._orders.addItem(orderId, {
+            quantity: items[i].quantity,
+            place: localStorage.getItem('current_order_place'),
+            product: { id: items[i].productId }
+          })
         )
       }
-
     }
 
-
-    Observable.forkJoin(allItems).subscribe(
-      () => {
-        this.vaciaCarro()
-        this._router.navigate(['favolist', 'orders', 'orders-list', 'process'])
-        console.log('se supone que habia terminado')
-      }
-    )
-
-
+    Observable.forkJoin(allItems).subscribe(() => {
+      this.vaciaCarro()
+      this._orders.sendMsg('item updated')
+      this._router.navigate(['favolist', 'orders', 'orders-list', 'process'])
+      console.log('se supone que habia terminado')
+    })
   }
 
   vaciar() {

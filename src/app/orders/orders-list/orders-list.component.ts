@@ -47,7 +47,6 @@ export class OrdersListComponent implements OnInit {
       this.ruta = res[0].path
       console.log('THE ROUTE', this.ruta)
     })
-
   }
 
   private RecuperaDatos() {
