@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0px;
+  width: 100%;
+}
+
+.venta {
+  float: right;
+}
+
+.big {
+  font-weight: 700;
+  font-size: 120%;
+  color: red;
+  float: right;
+}

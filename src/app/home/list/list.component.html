@@ -1,8 +1,30 @@
-<div class="container">
-  <div class="products">
-    Reservado para vista del dia
+<div class="dash">
+  <div class="button-container">
+    <button mat-raised-button color="primary" class="full-width" (click)="prevWeek()">
+      <i class="material-icons">arrow_back</i>
+    </button>
+    <button mat-raised-button color="primary" class="full-width" (click)="today()">
+      <i class="material-icons">arrow_downward</i>
+    </button>
+    <button mat-raised-button color="primary" class="full-width" (click)="nextWeek()">
+      <i class="material-icons">arrow_forward</i>
+    </button>
   </div>
-  <div class="today">
-    <!--<app-available-list></app-available-list>-->
+
+  <div *ngIf="!isToday">
+    <div class="container">
+      <app-stock-list *ngFor="let date of days" [date]="date.day" (onlyOne)="todayOnly($event)"></app-stock-list>
+    </div>
+  </div>
+  <div *ngIf="isToday">
+    <div>
+      <span> Today Only View {{hoy}}</span>
+      <span style="float: right;">
+        <button mat-button color="accent" class="full-width" (click)="today()">
+          <i class="material-icons">clear</i>
+        </button>
+      </span>
+    </div>
+    <app-stock-day [date]="hoy"></app-stock-day>
   </div>
 </div>

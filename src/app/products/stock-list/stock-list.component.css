@@ -1,0 +1,55 @@
+.available-list {
+  width: 100%;
+  padding: 0px;
+}
+
+.header {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-left: 2px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0px;
+  width: 100%;
+}
+.button-container-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0px;
+  width: 100%;
+}
+.button-container-four {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr;
+  grid-gap: 0px;
+  width: 100%;
+}
+mat-chip {
+  font-size: 50%;
+}
+
+mat-card {
+  margin-bottom: 2px;
+}
+
+.picker {
+  display: none;
+}
+
+.venta {
+  float: right;
+}
+
+.big {
+  font-weight: 700;
+  font-size: 120%;
+  color: red;
+}

@@ -63,9 +63,10 @@ export class UsersListComponent implements OnInit {
     this._router.navigate(['favolist', 'users', 'edit'])
   }
 
-  order(user) {
+  order(user: any, where: string) {
     //
     localStorage.setItem('current_client', user.id)
+    localStorage.setItem('current_order_place', where)
     this._router.navigate(['favolist', 'orders', 'new', user.id])
   }
 }

@@ -72,4 +72,16 @@ export class OrdersService {
       this.apiUrl + `/orders/today/users/${userId}/shops/${shopId}`
     )
   }
+
+  orderedFromToday(userId: string, shopId: number): Observable<any> {
+    return this.http$.get(
+      this.apiUrl + `/orders/fromtoday/users/${userId}/shops/${shopId}`
+    )
+  }
+
+  dashboard(date: string, shopid: number): Observable<any> {
+    return this.http$.get(
+      this.apiUrl + `/orders/dashboard/${date}/shop/${shopid}`
+    )
+  }
 }

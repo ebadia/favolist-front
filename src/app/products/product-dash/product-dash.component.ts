@@ -8,6 +8,7 @@ import * as moment from 'moment'
 })
 export class ProductDashComponent implements OnInit {
   days: any[]
+
   constructor() {}
 
   ngOnInit() {

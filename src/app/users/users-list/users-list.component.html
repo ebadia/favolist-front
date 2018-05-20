@@ -7,7 +7,7 @@
     </button>
   </mat-form-field>
 
-  <button mat-raised-button color="accent" (click)="new()">NUEVO</button>
+  <button mat-raised-button color="accent" (click)="new()">NUEVO CLIENTE</button>
 
   <mat-list>
     <mat-list-item *ngFor="let user of users | filter : filtro">
@@ -17,7 +17,8 @@
         <span class="item">{{user.mobile}}</span>
         <div class="action-buttons">
           <!-- <button mat-button (click)="edit(user)">EDITA</button> -->
-          <button mat-raised-button color="accent" (click)="order(user)">PEDIDO</button>
+          <button mat-raised-button color="accent" (click)="order(user, 'SHOP')"><i class="material-icons">shop</i></button>
+          <button mat-raised-button color="accent" (click)="order(user, 'TEL')"><i class="material-icons">settings_phone</i></button>
           <button mat-raised-button color="accent" (click)="edit(user)" style="min-width: 36px; max-width: 56px;">
             <i class="material-icons">mode_edit</i>
           </button>

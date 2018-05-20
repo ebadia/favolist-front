@@ -161,6 +161,7 @@ export class CartComponent implements OnInit {
           this._orders
             .addItem(orderId, {
               quantity: items[i].quantity,
+              place: localStorage.getItem('current_order_place'),
               product: { id: items[i].productId }
             })
         )

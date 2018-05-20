@@ -1,0 +1,39 @@
+<div class="available-list">
+  <div>
+    <div>
+
+      <div>{{day}}</div>
+      <div>{{dayName}}</div>
+      <button mat-button (click)="setDay()">
+        <i class="material-icons">arrow_downward</i>
+      </button>
+
+      <mat-card *ngFor="let product of availables">
+        <mat-card-header>
+          <!--<i *ngIf="ruta==='add-availables'" class="material-icons" (click)="action(product)">delete</i>-->
+          <!--<i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>-->
+          <!--<h4 class="header">{{product.name}}</h4>-->
+          <!--<span class="small">{{product.stock}} # {{product.stockOut}}</span>-->
+        </mat-card-header>
+        <img mat-card-image src="product.image" *ngIf="product.image">
+        <mat-card-content>
+          <!--<i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>-->
+          <h4>{{product.name}}</h4>
+          <div class="small">{{product.produccion}}</div>
+          <div class="small">
+            <span class="produccion">{{product.produccionapp}}</span>
+            <span class="venta">{{product.ventaapp}}</span>
+          </div>
+          <div class="big">{{product.produccionapp - product.ventaapp}}</div>
+        </mat-card-content>
+
+        <!-- <mat-card-actions>
+        </mat-card-actions>
+
+        <mat-card-footer>
+        </mat-card-footer> -->
+
+      </mat-card>
+    </div>
+  </div>
+</div>
