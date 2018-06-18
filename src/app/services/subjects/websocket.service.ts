@@ -25,7 +25,7 @@ export class WebsocketService {
       })
       this.socket.on('item updated', data => {
         console.log(
-          'Received [item updated message from Websocket Server',
+          'Received [item updated] message from Websocket Server',
           data
         )
         anObserver.next(data)

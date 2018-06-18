@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+import { FilterPipe } from './pipes/filter-pipe.pipe'
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -30,10 +31,8 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatStepperModule,
-} from '@angular/material';
-
-import { FilterPipe } from './pipes/filter-pipe.pipe'
+  MatStepperModule
+} from '@angular/material'
 
 @NgModule({
   imports: [
@@ -67,7 +66,7 @@ import { FilterPipe } from './pipes/filter-pipe.pipe'
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule,
+    MatStepperModule
   ],
   exports: [
     MatAutocompleteModule,
@@ -103,8 +102,6 @@ import { FilterPipe } from './pipes/filter-pipe.pipe'
     MatStepperModule,
     FilterPipe
   ],
-  declarations: [    
-    FilterPipe
-  ]
+  declarations: [FilterPipe]
 })
 export class MaterialModule {}
