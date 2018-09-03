@@ -8,7 +8,6 @@ export class CartSubject {
   private cartChanged = new Subject<boolean>()
 
   // Observable string streams
-  // cartChangedAnnounced$ = this.cartChanged.asObservable()
   cartChangedAnnounced(): Observable<any> {
     return this.cartChanged.asObservable()
   }
