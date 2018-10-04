@@ -65,9 +65,29 @@ export class ProductEditComponent implements OnInit {
       stockOut: [data ? data.stockOut : 0],
       description: [data ? data.description : ''],
       image: [data ? data.image : ''],
-      shopId: [data ? data.shopId : '', Validators.required]
+      shopId: [data ? data.shopId : '', Validators.required],
+      file: [null]
     })
     // console.log('FORM DATA >>> ', this.form)
+  }
+
+  upload(event) {
+    console.log('event :', event)
+    if (event.target.files && event.target.files.length > 0) {
+      const file: File = event.target.files[0]
+      const formData: FormData = new FormData()
+      // formData.append(event.target.id, file, file.name);
+      formData.append('file', file, file.name)
+
+      console.log('DOCUMENT FORMDATA', formData)
+      this._service.upload(this.id, formData).subscribe(
+        data => {
+          this.product = data
+        },
+        error => {}
+      )
+    }
+    // form.clear()
   }
 
   onSubmit() {

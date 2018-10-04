@@ -10,7 +10,8 @@
     </div>
     <div>
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="stock para pedidos" [(ngModel)]="day.stockOut" (blur)="updateStock(i)">
+        <input matInput [disabled]="+day.stock === 0" placeholder="stock para pedidos" [(ngModel)]="day.stockOut"
+          (blur)="updateStock(i)">
       </mat-form-field>
     </div>
   </div>
