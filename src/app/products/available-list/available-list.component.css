@@ -40,6 +40,10 @@ mat-card {
   margin-bottom: 2px;
 }
 
+mat-card:active {
+  background-color: #cecece;
+}
+
 .picker {
   display: none;
 }

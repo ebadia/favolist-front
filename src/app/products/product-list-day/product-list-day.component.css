@@ -1,5 +1,11 @@
 mat-card {
   margin-bottom: 2px;
+  cursor: pointer;
+}
+
+.product-card:hover,
+.product-card:active {
+  background-color: #cecece;
 }
 
 .full-width {

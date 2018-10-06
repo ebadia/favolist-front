@@ -1,15 +1,12 @@
 <div class="available-list">
-  <div class="button-container">
-    <div *ngIf="ruta!=='add-availables' && ruta!=='new'">
-      <button mat-mini-fab color="accent"
-              (click)="add()"><i class="material-icons">mode_edit</i></button>
-      <button [disabled]="availables && availables.length === 0" mat-mini-fab color="accent"
-              (click)="vaciar()"><i class="material-icons">delete</i>
-      </button>
-    </div>
+  <div class="button-container" *ngIf="ruta!=='add-availables' && ruta!=='new'">
+    <button mat-icon-button color="accent" (click)="add()"><i class="material-icons">mode_edit</i></button>
+    <button [disabled]="availables && availables.length === 0" mat-icon-button color="accent" (click)="vaciar()"><i
+        class="material-icons">delete</i>
+    </button>
   </div>
   <div *ngIf="ruta==='add-availables'">
-    <button [disabled]="isEditing"  mat-raised-button color="primary" class="full-width" (click)="vaciar()"><i class="material-icons">delete</i>
+    <button [disabled]="isEditing" mat-raised-button color="primary" class="full-width" (click)="vaciar()"><i class="material-icons">delete</i>
     </button>
   </div>
   <div *ngIf="ruta==='new'">
@@ -33,23 +30,23 @@
 
       <mat-card *ngFor="let product of availables" (click)="action(product)">
         <mat-card-header>
+          <img mat-card-avatar [src]="product.image" *ngIf="product.image">
+          <mat-card-title>{{product.name}}</mat-card-title>
           <!--<i *ngIf="ruta==='add-availables'" class="material-icons" (click)="action(product)">delete</i>-->
           <!--<i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>-->
           <!--<h4 class="header">{{product.name}}</h4>-->
           <!--<span class="small">{{product.stock}} # {{product.stockOut}}</span>-->
         </mat-card-header>
-        <img mat-card-image src="product.image" *ngIf="product.image">
+
         <mat-card-content>
-          <!--<i *ngIf="ruta==='new'" class="material-icons">shopping_basket</i>-->
-          <h4>{{product.name}}</h4>
-          <span class="small">{{product.availableStock}} # {{product.availableStockOut}}</span>
+          <mat-card-subtitle>{{product.availableStock}} # {{product.availableStockOut}}</mat-card-subtitle>
         </mat-card-content>
 
         <!-- <mat-card-actions>
-        </mat-card-actions>
+        </mat-card-actions> -->
 
         <mat-card-footer>
-        </mat-card-footer> -->
+        </mat-card-footer>
 
       </mat-card>
     </div>

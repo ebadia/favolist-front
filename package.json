@@ -1,5 +1,8 @@
 {
   "name": "favolist",
+  "engines": {
+    "node": "8.11.3"
+  },
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {

@@ -1,15 +1,19 @@
 .container {
+  --maxwidth: 220;
+  --card-width: calc(var(--maxwidth) * 1px);
+  --text-width: calc(var(--maxwidth) * 0.8px);
   width: 100vw;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
   justify-content: stretch;
 }
 
 .truncate {
-  width: 200px;
-  white-space: nowrap;
+  width: var(--text-width);
+  /* white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
 }
 
 .card-grid {
@@ -19,12 +23,12 @@
 }
 
 .product-image {
-  height: 250px;
+  height: var(--card-width);
 }
 
 .header {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .full-width {

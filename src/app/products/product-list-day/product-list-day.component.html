@@ -2,7 +2,7 @@
   <button mat-raised-button color="primary" class="full-width" (click)="hoy()">AÑADE LOS PRODUCTOS DEL DIA DE HOY
   </button>
 
-  <mat-card *ngFor="let product of products" (click)="add(product)">
+  <mat-card class="product-card" *ngFor="let product of products" (click)="add(product)">
 
     <mat-card-content class="full">
       <h4>{{product.name}}

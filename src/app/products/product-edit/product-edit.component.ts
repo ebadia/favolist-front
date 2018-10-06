@@ -50,7 +50,7 @@ export class ProductEditComponent implements OnInit {
   RecuperaDatos() {
     this._service.getOne(+this.id).subscribe(res => {
       this.product = res
-      _.forEach(res.days, day => (this.checked[day.code] = true))
+      // _.forEach(res.days, day => (this.checked[day.code] = true))
       this.initForm()
     })
   }
@@ -83,6 +83,7 @@ export class ProductEditComponent implements OnInit {
       this._service.upload(this.id, formData).subscribe(
         data => {
           this.product = data
+          this.initForm()
         },
         error => {}
       )
@@ -129,5 +130,9 @@ export class ProductEditComponent implements OnInit {
       })
       console.log(this.checked)
     }
+  }
+
+  removeImage() {
+    this.form.value.image = null
   }
 }

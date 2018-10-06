@@ -18,10 +18,10 @@
   <mat-card *ngFor="let product of products; let i = index">
 
     <mat-card-header>
-      <h4 class="truncate">{{product.name}}</h4>
-      <!--<span class="small" *ngFor="let day of product.days">{{day.name}} </span>-->
+      <img mat-card-avatar *ngIf="product.image && product.image !== ''" [src]="product.image">
+      <mat-card-title>{{product.name}}</mat-card-title>
     </mat-card-header>
-    <img class="product-image" *ngIf="product.image && product.image !== ''" alt="-" mat-card-image [src]="product.image">
+
     <mat-card-content>
       <button mat-raised-button (click)="edit(product)"><i class="material-icons">mode_edit</i></button>
       <button mat-raised-button color="accent" (click)="delete(product)"><i class="material-icons">delete</i></button>
